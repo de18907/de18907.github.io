@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Preahvihear&display=swap');
+
+.logo {
+   width: 120px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+header{
+    background-color: rgb(9, 219, 96);
+ }
+
+.a{
+    text-decoration: none;
+} 
+
+header ul {
+    list-style: none;   
+}
+
+header ul li {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
+
+ img{
+    width: 250px; 
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10px;
+ }
+
+h1{
+   color: rgb(9, 73, 3);
+   font-size: 34px;  
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   text-align: center;
+}
+h3{
+   font-size: 24px;  
+   color: rgb(9, 73, 3);
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   text-align: center;
+}
+
+p{
+   font-size: 20px; 
+   color: rgb(0, 0, 0);
+   display: flex;
+   text-align: justify;
+}
+
+.presentacion h1 {
+   font-size: 35px;
+   text-align: center;
+}
+
+.presentacion p {
+   font-size: 30px;
+   padding: 10px;
+   font-family: 'Caprasimo', cursive; font-family: 'Preahvihear', sans-serif;
+}
+
+.main{
+   margin: 10px 0 10px 0;
+   background-color: rgba(119, 177, 80, 0.466);
+   display: flex;
+   align-items: center;
+}
+.caja img {
+   border-radius: 150px;
+   height: 130px;
+}
+
+.caja p {
+   font-size: 18px; 
+}
+
+.img_carousel{
+   width: 100%;
+   margin: 0px;
+}

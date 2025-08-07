@@ -8,13 +8,9 @@ License: https://bootstrapmade.com/license/
 pendientes:
 SEO
 Link de correo, telefono (arriba)
- Link de las redes sociales
-Evaluar cambiar en el menu formacion academica por porque elegir
-Poner en menu preguntas frecuentes
-Jugar con los colores entre secciones
-Preguntar si lo servicios que estan estan bien o se necesita cambiarlo
-Cuando selecciones el servicio llevarlo al formulario y completar.
-Cambiar imagenes de formacion academica
-Cambiar imagenes de infecciones que tratamos y agregar texto
 Link de correo, telefono (abajo)
- Link de las redes sociales
+Link de las redes sociales
+icono y logo de la pagina
+Jugar con los colores entre secciones
+Cuando selecciones el servicio llevarlo al formulario y completar.
+Cambiar imagenes de infecciones que tratamos y agregar texto

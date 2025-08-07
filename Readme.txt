@@ -6,11 +6,13 @@ Author: BootstrapMade.com
 License: https://bootstrapmade.com/license/
 
 pendientes:
-SEO
+Imagen de fondo profecional
+Cambiar imagenes de infecciones que tratamos y agregar texto
+icono y logo de la pagina
 Link de correo, telefono (arriba)
 Link de correo, telefono (abajo)
 Link de las redes sociales
-icono y logo de la pagina
 Jugar con los colores entre secciones
 Cuando selecciones el servicio llevarlo al formulario y completar.
-Cambiar imagenes de infecciones que tratamos y agregar texto
+SEO
+Comprar dominio y crear cuenta github

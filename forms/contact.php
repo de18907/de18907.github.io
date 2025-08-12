@@ -1,41 +1,36 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// Configura el correo que recibirá los mensajes
+$destinatario = "sanh1907@hotmail.com";
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'sanh1907@hotmail.com';
+// Captura y limpia datos del formulario
+$nombre  = isset($_POST['name']) ? strip_tags(trim($_POST['name'])) : '';
+$email   = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
+$asunto  = isset($_POST['subject']) ? strip_tags(trim($_POST['subject'])) : 'Sin asunto';
+$mensaje = isset($_POST['message']) ? strip_tags(trim($_POST['message'])) : '';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+if (empty($nombre) || empty($email) || empty($mensaje) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo "Por favor completa todos los campos correctamente.";
+    exit;
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+// Cuerpo del correo
+$cuerpo = "Has recibido un nuevo mensaje desde tu página web:\n\n";
+$cuerpo .= "Nombre: $nombre\n";
+$cuerpo .= "Correo: $email\n";
+$cuerpo .= "Asunto: $asunto\n\n";
+$cuerpo .= "Mensaje:\n$mensaje\n";
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+// Encabezados del correo
+$headers = "From: $nombre <$email>\r\n";
+$headers .= "Reply-To: $email\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
+// Envía el correo
+if (mail($destinatario, $asunto, $cuerpo, $headers)) {
+    echo "OK"; // Lo que espera el JS de la plantilla
+} else {
+    http_response_code(500);
+    echo "No se pudo enviar el mensaje.";
+}
 ?>

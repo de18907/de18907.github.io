@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "format": "date-time" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["income", "expense"] },
+        "accountId": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["amount", "date", "category", "type", "userId"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Financial account",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "balance": { "type": "number" },
+        "currency": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["name", "balance", "userId"]
+    },
+    "Budget": {
+      "title": "Budget",
+      "description": "Budget limit for a category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "type": "string" },
+        "limit": { "type": "number" },
+        "period": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["category", "limit", "userId"]
+    }
+  },
+  "firestore": {
+    "/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Collection of financial transactions"
+    },
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Collection of user accounts"
+    },
+    "/budgets/{budgetId}": {
+      "schema": "Budget",
+      "description": "Collection of user budgets"
+    }
+  }
+}

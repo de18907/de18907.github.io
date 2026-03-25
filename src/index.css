@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --ink: #050505;
+  --paper: #f5f5f4;
+  --accent: #F27D26;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes slamIn {
+  0% { transform: scale(2) translateY(-100px) skewX(-10deg); opacity: 0; }
+  100% { transform: scale(1) translateY(0) skewX(-10deg); opacity: 1; }
+}
+
+.animate-slam {
+  animation: slamIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.skew-title {
+  transform: skewX(-10deg);
+}

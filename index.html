@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Studio | Modern Design</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --ink: #050505;
+            --paper: #f5f5f4;
+            --accent: #F27D26;
+        }
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-display { font-family: 'Anton', sans-serif; }
+        .border-text {
+            -webkit-text-stroke: 1px var(--ink);
+            color: transparent;
+        }
+        @keyframes slamIn {
+            0% { transform: scale(2) translateY(-100px) skewX(-10deg); opacity: 0; }
+            100% { transform: scale(1) translateY(0) skewX(-10deg); opacity: 1; }
+        }
+        .animate-slam {
+            animation: slamIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .skew-title {
+            transform: skewX(-10deg);
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="selection:bg-orange-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="font-display text-2xl tracking-tighter uppercase">Studio.</a>
+            
+            <div class="hidden md:flex gap-12 items-center">
+                <a href="#work" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Work</a>
+                <a href="#studio" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Studio</a>
+                <a href="#contact" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Contact</a>
+                <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-all">
+                    Let's Talk
+                </button>
+            </div>
+
+            <button class="md:hidden" id="menu-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-500 opacity-0 -translate-y-10 pointer-events-none">
+        <button class="absolute top-8 right-6" id="menu-close">
+            <i data-lucide="x"></i>
+        </button>
+        <a href="#work" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Work</a>
+        <a href="#studio" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Studio</a>
+        <a href="#contact" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center px-6 pt-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="mb-4">
+                <span class="text-xs font-bold uppercase tracking-[0.3em] text-orange-500">Creative Agency</span>
+            </div>
+            <h1 class="font-display text-[15vw] md:text-[12vw] leading-[0.85] uppercase tracking-tighter skew-title animate-slam">
+                Crafting <br />
+                Digital <br />
+                <span class="border-text">Emotion</span>
+            </h1>
+            
+            <div class="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                <p class="max-w-md text-xl text-gray-600 leading-relaxed font-light">
+                    We are a boutique studio specializing in high-end digital experiences that bridge the gap between art and technology.
+                </p>
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full border border-black flex items-center justify-center animate-bounce">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="absolute -right-20 top-1/4 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -left-20 bottom-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl -z-10"></div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-20 reveal">
+                <h2 class="font-display text-6xl uppercase tracking-tighter">Selected <br> Works</h2>
+                <p class="hidden md:block text-gray-500 max-w-xs text-right">A curated selection of our most impactful projects from the last year.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="AURA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="mt-8 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-3xl uppercase tracking-tight">AURA</h3>
+                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Branding</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group cursor-pointer md:mt-32 reveal">
+                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="NEON" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="mt-8 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-3xl uppercase tracking-tight">NEON</h3>
+                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Digital Design</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="KINETIC" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="mt-8 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-3xl uppercase tracking-tight">KINETIC</h3>
+                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Motion</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="group cursor-pointer md:mt-32 reveal">
+                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800" alt="FLUX" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                    <div class="mt-8 flex justify-between items-start">
+                        <div>
+                            <h3 class="font-display text-3xl uppercase tracking-tight">FLUX</h3>
+                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">UI/UX</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studio Section -->
+    <section id="studio" class="py-32 px-6 bg-black text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="reveal">
+                <h2 class="font-display text-7xl uppercase tracking-tighter leading-none mb-12">
+                    We build <br>
+                    the future <br>
+                    of web
+                </h2>
+                <p class="text-xl text-gray-400 leading-relaxed font-light mb-12">
+                    Our studio is a playground for innovation. We don't just follow trends; we define them through meticulous design and cutting-edge engineering.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-4xl font-display text-orange-500">12+</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">Awards Won</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-display text-orange-500">150+</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">Projects Delivered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative reveal">
+                <div class="aspect-square rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Studio" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-32 px-6 bg-[#050505] text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 mb-32">
+                <div class="reveal">
+                    <h2 class="font-display text-8xl uppercase tracking-tighter leading-none mb-12">
+                        Start a <br> Project
+                    </h2>
+                    <a href="mailto:hello@studio.com" class="text-3xl md:text-5xl font-light hover:text-orange-500 transition-colors underline underline-offset-8">
+                        hello@studio.com
+                    </a>
+                </div>
+                <div class="flex flex-col justify-between reveal">
+                    <div class="space-y-4">
+                        <p class="text-gray-500 uppercase tracking-widest text-sm">Socials</p>
+                        <div class="flex gap-6">
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="instagram"></i></a>
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="twitter"></i></a>
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="mt-20 md:mt-0">
+                        <p class="text-gray-500 uppercase tracking-widest text-sm mb-4">Office</p>
+                        <p class="text-xl font-light">123 Design St. <br> Creative District <br> NY 10001</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
+                <p class="text-gray-500 text-sm">© 2026 Creative Studio. All rights reserved.</p>
+                <div class="flex gap-12 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'py-4');
+                navbar.classList.remove('py-8');
+            } else {
+                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'py-4');
+                navbar.classList.add('py-8');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu(show) {
+            if (show) {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-10', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.add('opacity-0', '-translate-y-10', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        }
+
+        menuToggle.addEventListener('click', () => toggleMenu(true));
+        menuClose.addEventListener('click', () => toggleMenu(false));
+        
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Reveal on Scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+</body>
+</html>

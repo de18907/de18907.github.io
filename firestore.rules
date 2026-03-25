@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: transactions
+    // Document ID: auto-generated
+    // Fields:
+    //   - amount: number (required)
+    //   - date: timestamp (required)
+    //   - category: string (required)
+    //   - description: string (optional)
+    //   - type: string (required, 'income' or 'expense')
+    //   - accountId: string (optional)
+    //   - userId: string (required, matches owner)
+    //
+    // Collection: accounts
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required)
+    //   - balance: number (required)
+    //   - currency: string (required)
+    //   - userId: string (required, matches owner)
+    //
+    // Collection: budgets
+    // Document ID: auto-generated
+    // Fields:
+    //   - category: string (required)
+    //   - limit: number (required)
+    //   - period: string (required)
+    //   - userId: string (required, matches owner)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isDocOwner() {
+      return isAuthenticated() && request.auth.uid == resource.data.userId;
+    }
+
+    function isValidTransaction(data) {
+      return data.keys().hasAll(['amount', 'date', 'category', 'type', 'userId']) &&
+             data.amount is number &&
+             data.date is timestamp &&
+             data.category is string && data.category.size() > 0 && data.category.size() < 100 &&
+             data.type in ['income', 'expense'] &&
+             data.userId == request.auth.uid;
+    }
+
+    function isValidAccount(data) {
+      return data.keys().hasAll(['name', 'balance', 'currency', 'userId']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.balance is number &&
+             data.currency is string && data.currency.size() == 3 &&
+             data.userId == request.auth.uid;
+    }
+
+    function isValidBudget(data) {
+      return data.keys().hasAll(['category', 'limit', 'period', 'userId']) &&
+             data.category is string && data.category.size() > 0 && data.category.size() < 100 &&
+             data.limit is number && data.limit >= 0 &&
+             data.period is string &&
+             data.userId == request.auth.uid;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /transactions/{transactionId} {
+      allow read: if isDocOwner();
+      allow create: if isAuthenticated() && isValidTransaction(request.resource.data);
+      allow update: if isDocOwner() && isValidTransaction(request.resource.data);
+      allow delete: if isDocOwner();
+    }
+
+    match /accounts/{accountId} {
+      allow read: if isDocOwner();
+      allow create: if isAuthenticated() && isValidAccount(request.resource.data);
+      allow update: if isDocOwner() && isValidAccount(request.resource.data);
+      allow delete: if isDocOwner();
+    }
+
+    match /budgets/{budgetId} {
+      allow read: if isDocOwner();
+      allow create: if isAuthenticated() && isValidBudget(request.resource.data);
+      allow update: if isDocOwner() && isValidBudget(request.resource.data);
+      allow delete: if isDocOwner();
+    }
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}

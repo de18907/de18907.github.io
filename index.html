@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Micky Cruz Studio | Creative & Tech Excellence</title>
+    <title>MickyCutz Studio | Barbería de Autor</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -12,12 +12,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --ink: #0a0a0a;
-            --paper: #fcfcfc;
-            --accent: #F27D26; /* Warm orange accent */
+            --bg: #050505;
+            --ink: #ffffff;
+            --accent: #D4AF37; /* Gold accent */
+            --muted: rgba(255, 255, 255, 0.6);
         }
         body {
-            background-color: var(--paper);
+            background-color: var(--bg);
             color: var(--ink);
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -31,52 +32,59 @@
         }
         
         @keyframes slamIn {
-            0% { transform: scale(1.2) translateY(-30px); opacity: 0; }
+            0% { transform: scale(1.5) translateY(-50px); opacity: 0; }
             100% { transform: scale(1) translateY(0); opacity: 1; }
         }
         .animate-slam {
-            animation: slamIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slamIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .studio-grid {
-            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
+        .gold-gradient {
+            background: linear-gradient(45deg, #B8860B, #D4AF37, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
-        .image-mask {
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         .skew-title {
-            transform: skewX(-5deg);
+            transform: skewX(-8deg);
+        }
+
+        .line-mask {
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
     </style>
 </head>
-<body class="selection:bg-orange-500 selection:text-white studio-grid">
+<body class="selection:bg-yellow-600 selection:text-white">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="font-display text-3xl tracking-tighter uppercase flex items-center gap-1">
-                Micky <span class="text-orange-500">Cruz</span>
+            <a href="#" class="font-display text-3xl tracking-tighter uppercase flex items-center gap-1 group">
+                Micky <span class="text-yellow-600 group-hover:text-white transition-colors">Cutz</span>
             </a>
             
             <div class="hidden md:flex gap-12 items-center">
-                <a href="#work" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Work</a>
-                <a href="#services" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Services</a>
-                <a href="#studio" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Studio</a>
-                <a href="#contact" class="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl shadow-orange-100">
-                    Collaborate
+                <a href="#servicios" class="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-yellow-600 transition-colors">Servicios</a>
+                <a href="#galeria" class="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-yellow-600 transition-colors">Galería</a>
+                <a href="#studio" class="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-yellow-600 transition-colors">El Studio</a>
+                <a href="#contacto" class="border border-white/20 px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">
+                    Reservar
                 </a>
             </div>
 
@@ -87,235 +95,299 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-500 opacity-0 -translate-y-10 pointer-events-none">
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-500 opacity-0 -translate-y-10 pointer-events-none">
         <button class="absolute top-8 right-6" id="menu-close">
             <i data-lucide="x"></i>
         </button>
-        <a href="#work" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Work</a>
-        <a href="#services" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Services</a>
-        <a href="#studio" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Studio</a>
-        <a href="#contact" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Contact</a>
+        <a href="#servicios" class="font-display text-5xl uppercase tracking-tighter hover:text-yellow-600 transition-colors">Servicios</a>
+        <a href="#galeria" class="font-display text-5xl uppercase tracking-tighter hover:text-yellow-600 transition-colors">Galería</a>
+        <a href="#studio" class="font-display text-5xl uppercase tracking-tighter hover:text-yellow-600 transition-colors">El Studio</a>
+        <a href="#contacto" class="font-display text-5xl uppercase tracking-tighter hover:text-yellow-600 transition-colors">Contacto</a>
     </div>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center px-6 pt-20 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="mb-6">
-                <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-orange-500">Micky Cruz Studio</span>
-            </div>
-            <h1 class="font-display text-[14vw] md:text-[11vw] leading-[0.8] uppercase tracking-tighter skew-title animate-slam">
-                Visual <br />
-                <span class="border-text">Narratives</span> <br />
-                & Code
-            </h1>
-            
-            <div class="mt-16 flex flex-col md:flex-row md:items-end justify-between gap-12">
-                <div class="max-w-xl">
-                    <p class="text-2xl font-serif italic text-gray-800 leading-snug mb-6">
-                        "Capturing the essence of moments through a lens, and building the future through clean, efficient code."
-                    </p>
-                    <p class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Photography • Design • Software</p>
-                </div>
-                <div class="flex gap-4 items-center">
-                    <div class="w-16 h-16 rounded-full border border-black flex items-center justify-center animate-bounce cursor-pointer hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all">
-                        <i data-lucide="arrow-down"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="absolute inset-0 -z-10">
+            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1920" alt="Barber Background" class="w-full h-full object-cover opacity-30 grayscale" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/50"></div>
         </div>
 
-        <!-- Decorative elements -->
-        <div class="absolute -right-40 top-1/4 w-[600px] h-[600px] bg-orange-400/5 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute -left-40 bottom-1/4 w-[600px] h-[600px] bg-gray-400/5 rounded-full blur-3xl -z-10"></div>
-    </section>
-
-    <!-- Featured Work Section -->
-    <section id="work" class="py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 reveal">
-                <div>
-                    <h2 class="font-display text-7xl uppercase tracking-tighter mb-4">Selected <br> Works</h2>
-                    <p class="text-orange-500 font-serif italic text-lg">A journey through light and logic.</p>
-                </div>
-                <p class="text-gray-400 max-w-xs mt-8 md:mt-0 text-sm uppercase tracking-widest font-bold">Portfolio 2024-2026</p>
+        <div class="max-w-7xl mx-auto w-full relative">
+            <div class="mb-8 reveal">
+                <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-yellow-600">MickyCutz Studio | Signature Barbershop</span>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-                <!-- Project 1 -->
-                <div class="md:col-span-7 group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-3xl aspect-[16/10] bg-gray-100 relative">
-                        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=1200" alt="Urban Light" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                            <span class="text-white font-display text-4xl uppercase tracking-widest">View Project</span>
-                        </div>
-                    </div>
-                    <div class="mt-8 flex justify-between items-center">
-                        <div>
-                            <h3 class="font-display text-4xl uppercase tracking-tight">Urban Light</h3>
-                            <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Photography Series</p>
-                        </div>
-                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all">
-                            <i data-lucide="external-link" size={20}></i>
-                        </div>
+            <h1 class="font-display text-[16vw] md:text-[12vw] leading-[0.85] uppercase tracking-tighter skew-title animate-slam">
+                Cortes <br />
+                <span class="border-text">De Autor</span> <br />
+                & Estilo
+            </h1>
+            
+            <div class="mt-20 flex flex-col md:flex-row md:items-end justify-between gap-16">
+                <div class="max-w-xl reveal">
+                    <p class="text-2xl md:text-3xl font-serif italic text-white/80 leading-snug mb-8">
+                        "Elevando el arte de la barbería a una experiencia de lujo y precisión absoluta."
+                    </p>
+                    <div class="flex gap-6 items-center">
+                        <div class="h-[1px] w-12 bg-yellow-600"></div>
+                        <p class="text-[10px] text-gray-400 uppercase tracking-[0.4em] font-bold">Tradición • Vanguardia • Exclusividad</p>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="md:col-span-5 md:mt-48 group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100 relative">
-                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=800" alt="TechFlow App" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                            <span class="text-white font-display text-4xl uppercase tracking-widest">Case Study</span>
-                        </div>
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="font-display text-4xl uppercase tracking-tight">TechFlow App</h3>
-                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Software Development</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="md:col-span-5 group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100 relative">
-                        <img src="https://images.unsplash.com/photo-1493119508027-2b584f234d6c?auto=format&fit=crop&q=80&w=800" alt="Minimalist Branding" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="font-display text-4xl uppercase tracking-tight">Minimalist Branding</h3>
-                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Digital Design</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="md:col-span-7 md:mt-48 group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-3xl aspect-[16/10] bg-gray-100 relative">
-                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1200" alt="Studio Sessions" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
-                    </div>
-                    <div class="mt-8">
-                        <h3 class="font-display text-4xl uppercase tracking-tight">Studio Sessions</h3>
-                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Portrait Photography</p>
-                    </div>
+                <div class="reveal">
+                    <a href="#contacto" class="group relative inline-flex items-center justify-center w-32 h-32 rounded-full border border-white/20 hover:border-yellow-600 transition-all duration-500">
+                        <div class="absolute inset-0 rounded-full bg-yellow-600 scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                        <i data-lucide="arrow-down" class="relative z-10 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-32 px-6 bg-gray-50">
+    <section id="servicios" class="py-40 px-6 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24 reveal">
-                <h2 class="font-display text-7xl uppercase tracking-tighter mb-6">Expertise</h2>
-                <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-32 reveal">
+                <div>
+                    <span class="text-yellow-600 text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Menú de Experiencias</span>
+                    <h2 class="font-display text-8xl uppercase tracking-tighter leading-none">Nuestros <br> <span class="text-gray-800">Servicios</span></h2>
+                </div>
+                <p class="text-gray-500 max-w-xs mt-8 md:mt-0 text-[10px] uppercase tracking-[0.3em] font-bold">Excelencia en cada detalle.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Service 1 -->
-                <div class="reveal">
-                    <div class="mb-8">
-                        <i data-lucide="camera" class="w-12 h-12 text-orange-500"></i>
+                <div class="reveal glass p-10 rounded-[40px] hover:bg-white/5 transition-all duration-500 group">
+                    <div class="mb-8 text-yellow-600">
+                        <i data-lucide="scissors" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Photography</h3>
-                    <p class="text-gray-600 leading-relaxed font-light">
-                        High-end commercial, portrait, and urban photography. Capturing moments that tell a story beyond the frame.
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-4">Fades</h3>
+                    <p class="text-gray-400 leading-relaxed font-light mb-6 text-base">
+                        Técnica de desvanecido impecable, personalizada según tu estilo y tipo de cabello.
                     </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-yellow-600 font-bold text-lg">DOP 1,000</span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-yellow-600 group-hover:border-yellow-600 transition-all">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </div>
+                    </div>
                 </div>
                 <!-- Service 2 -->
-                <div class="reveal">
-                    <div class="mb-8">
-                        <i data-lucide="layout" class="w-12 h-12 text-orange-500"></i>
+                <div class="reveal glass p-10 rounded-[40px] hover:bg-white/5 transition-all duration-500 group">
+                    <div class="mb-8 text-yellow-600">
+                        <i data-lucide="scissors" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Digital Design</h3>
-                    <p class="text-gray-600 leading-relaxed font-light">
-                        Creating visual identities and user experiences that are both beautiful and functional. Branding, UI/UX, and Print.
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-4">Corte Sencillo</h3>
+                    <p class="text-gray-400 leading-relaxed font-light mb-6 text-base">
+                        Corte clásico con acabado profesional, ideal para mantener tu estilo día a día.
                     </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-yellow-600 font-bold text-lg">DOP 1,000</span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-yellow-600 group-hover:border-yellow-600 transition-all">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </div>
+                    </div>
                 </div>
                 <!-- Service 3 -->
-                <div class="reveal">
-                    <div class="mb-8">
-                        <i data-lucide="terminal" class="w-12 h-12 text-orange-500"></i>
+                <div class="reveal glass p-10 rounded-[40px] hover:bg-white/5 transition-all duration-500 group">
+                    <div class="mb-8 text-yellow-600">
+                        <i data-lucide="scissors" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Software Dev</h3>
-                    <p class="text-gray-600 leading-relaxed font-light">
-                        Building robust digital products. From web applications to custom tools, engineered for performance and scale.
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-4">High - Low Taper</h3>
+                    <p class="text-gray-400 leading-relaxed font-light mb-6 text-base">
+                        Diseño de taper preciso, resaltando las líneas naturales de tu corte.
                     </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-yellow-600 font-bold text-lg">DOP 1,000</span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-yellow-600 group-hover:border-yellow-600 transition-all">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="reveal glass p-10 rounded-[40px] hover:bg-white/5 transition-all duration-500 group">
+                    <div class="mb-8 text-yellow-600">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-4">Corte Completo + Facial</h3>
+                    <p class="text-gray-400 leading-relaxed font-light mb-6 text-base">
+                        Experiencia total: Corte de autor más tratamiento facial revitalizante.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-yellow-600 font-bold text-lg">DOP 1,300</span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-yellow-600 group-hover:border-yellow-600 transition-all">
+                            <i data-lucide="plus" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-40 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-32 reveal">
+                <h2 class="font-display text-8xl uppercase tracking-tighter mb-8 md:mb-0">El Arte <br> <span class="text-gray-800">Del Corte</span></h2>
+                <div class="text-right">
+                    <p class="text-yellow-600 font-serif italic text-2xl mb-2">Estilo sin límites.</p>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold">Galería de Trabajos</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-7 reveal">
+                    <div class="rounded-[40px] overflow-hidden aspect-[16/10] relative group">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200" alt="Barber Shop Interior" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" referrerpolicy="no-referrer">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-12">
+                            <p class="text-white font-display text-4xl uppercase tracking-tighter">Nuestro Santuario</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 reveal">
+                    <div class="rounded-[40px] overflow-hidden aspect-[4/5] relative group">
+                        <img src="https://images.unsplash.com/photo-1621605815841-aa897bd439b4?auto=format&fit=crop&q=80&w=800" alt="Sharp Haircut" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                </div>
+                <div class="md:col-span-5 reveal">
+                    <div class="rounded-[40px] overflow-hidden aspect-[4/5] relative group">
+                        <img src="https://images.unsplash.com/photo-1599351431247-f10b21ce9634?auto=format&fit=crop&q=80&w=800" alt="Beard Trim" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
+                </div>
+                <div class="md:col-span-7 reveal">
+                    <div class="rounded-[40px] overflow-hidden aspect-[16/10] relative group">
+                        <img src="https://images.unsplash.com/photo-1512690196252-741d2fd353c6?auto=format&fit=crop&q=80&w=1200" alt="Barber Tools" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" referrerpolicy="no-referrer">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Studio Section -->
-    <section id="studio" class="py-32 px-6 bg-black text-white overflow-hidden relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <section id="studio" class="py-40 px-6 bg-[#050505] overflow-hidden relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <div class="reveal">
-                <div class="mb-8">
-                    <span class="text-orange-500 font-serif italic text-xl">The Studio</span>
+                <div class="mb-12">
+                    <span class="text-yellow-600 font-serif italic text-2xl">MickyCutz Studio</span>
                 </div>
-                <h2 class="font-display text-8xl uppercase tracking-tighter leading-none mb-12">
-                    Micky <br> Cruz <br> <span class="text-gray-700">Studio</span>
+                <h2 class="font-display text-9xl uppercase tracking-tighter leading-[0.9] mb-12">
+                    Tradición <br> <span class="text-gray-800">&</span> Vanguardia
                 </h2>
-                <p class="text-xl text-gray-400 leading-relaxed font-light mb-12">
-                    A multi-disciplinary creative space where art meets technology. We believe in the power of visual storytelling and the precision of engineering.
+                <p class="text-xl text-gray-400 leading-relaxed font-light mb-16 max-w-lg">
+                    Más que una barbería, somos un estudio de diseño de imagen masculina. Cada corte es una obra de arte, cada cliente una historia. Ubicados en el corazón de Santo Domingo, ofrecemos una experiencia premium de cuidado personal.
                 </p>
-                <div class="grid grid-cols-2 gap-12">
+                <div class="grid grid-cols-2 gap-16">
                     <div>
-                        <p class="text-5xl font-display text-orange-500">08+</p>
-                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Years Experience</p>
+                        <p class="text-6xl font-display text-yellow-600">5.0</p>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Rating (32 Votos)</p>
                     </div>
                     <div>
-                        <p class="text-5xl font-display text-orange-500">200+</p>
-                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Clients Worldwide</p>
+                        <p class="text-6xl font-display text-yellow-600">DOP</p>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Moneda Local</p>
                     </div>
                 </div>
             </div>
             <div class="relative reveal">
-                <div class="aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
-                    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=1000" alt="Micky Cruz" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+                <div class="aspect-[3/4] rounded-[60px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl shadow-yellow-600/10">
+                    <img src="https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&q=80&w=1000" alt="Micky Cruz at Work" class="w-full h-full object-cover" referrerpolicy="no-referrer">
                 </div>
-                <div class="absolute -bottom-12 -left-12 bg-orange-500 p-12 rounded-full w-48 h-48 flex items-center justify-center text-center rotate-12">
-                    <p class="font-display text-white text-xl uppercase leading-tight">Creative <br> Vision</p>
+                <div class="absolute -bottom-16 -left-16 bg-yellow-600 p-16 rounded-full w-56 h-56 flex items-center justify-center text-center rotate-12 shadow-2xl shadow-yellow-600/20">
+                    <p class="font-display text-black text-2xl uppercase leading-tight tracking-tighter">Estilo <br> Sin Límites</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-40 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-32 reveal text-center">
+                <span class="text-yellow-600 text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">Testimonios</span>
+                <h2 class="font-display text-7xl uppercase tracking-tighter">Lo Que Dicen <br> <span class="text-gray-800">Nuestros Clientes</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="reveal glass p-16 rounded-[40px]">
+                    <p class="text-2xl font-serif italic text-white/90 mb-12 leading-relaxed">
+                        "La mejor experiencia de barbería en la ciudad. La atención al detalle de Micky es simplemente insuperable."
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                            <i data-lucide="user" class="text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold uppercase tracking-widest text-xs">Carlos Mendoza</p>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Empresario</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal glass p-16 rounded-[40px]">
+                    <p class="text-2xl font-serif italic text-white/90 mb-12 leading-relaxed">
+                        "Un ritual completo. Salgo renovado cada vez que visito el studio. El ambiente es increíble."
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-yellow-600/20 flex items-center justify-center">
+                            <i data-lucide="user" class="text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold uppercase tracking-widest text-xs">Roberto Silva</p>
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest">Arquitecto</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="py-32 px-6 bg-[#050505] text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-24 mb-32">
+    <footer id="contacto" class="py-40 px-6 bg-[#050505] text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-32 mb-40">
                 <div class="reveal">
-                    <h2 class="font-display text-9xl uppercase tracking-tighter leading-none mb-12">
-                        Let's <br> Talk
+                    <h2 class="font-display text-[12vw] md:text-[8vw] uppercase tracking-tighter leading-[0.8] mb-16">
+                        Reserva <br> <span class="text-yellow-600">Ahora</span>
                     </h2>
-                    <p class="text-gray-400 mb-12 max-w-sm text-lg font-light">Have a project in mind? Whether it's a shoot, a design, or a complex app, I'm ready to bring it to life.</p>
-                    <a href="mailto:micky@cruzstudio.com" class="text-3xl md:text-5xl font-serif italic hover:text-orange-500 transition-colors underline underline-offset-[12px] decoration-orange-500/30">
-                        micky@cruzstudio.com
-                    </a>
+                    <p class="text-gray-400 mb-16 max-w-sm text-xl font-light">¿Listo para un cambio? Agenda tu cita y vive la experiencia Micky Cruz Studio.</p>
+                    <div class="flex flex-col gap-8">
+                        <a href="tel:+525512345678" class="text-4xl md:text-6xl font-serif italic hover:text-yellow-600 transition-colors underline underline-offset-[16px] decoration-yellow-600/30">
+                            +52 55 1234 5678
+                        </a>
+                        <a href="mailto:citas@mickycruz.studio" class="text-xl md:text-3xl text-gray-600 hover:text-white transition-colors">
+                            citas@mickycruz.studio
+                        </a>
+                    </div>
                 </div>
                 <div class="flex flex-col justify-between reveal">
-                    <div class="space-y-6">
-                        <p class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-bold">Follow the Journey</p>
-                        <div class="flex gap-8">
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="instagram" size={24}></i></a>
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="twitter" size={24}></i></a>
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="linkedin" size={24}></i></a>
+                    <div class="space-y-12">
+                        <div>
+                            <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px] font-bold mb-8">Síguenos</p>
+                            <div class="flex gap-12">
+                                <a href="#" class="hover:text-yellow-600 transition-all hover:-translate-y-1"><i data-lucide="instagram" size={32}></i></a>
+                                <a href="#" class="hover:text-yellow-600 transition-all hover:-translate-y-1"><i data-lucide="facebook" size={32}></i></a>
+                                <a href="https://www.fresha.com/book-now/mickycutz-studio-n7xdhfou/services?lid=2838671&share=true&pId=2744775" target="_blank" class="hover:text-yellow-600 transition-all hover:-translate-y-1"><i data-lucide="calendar" size={32}></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-24 md:mt-0">
-                        <p class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-bold mb-6">Location</p>
-                        <p class="text-2xl font-light">Based in Mexico City <br> <span class="text-gray-500">Available Worldwide</span></p>
+                        <div>
+                            <p class="text-gray-500 uppercase tracking-[0.4em] text-[10px] font-bold mb-8">Ubicación</p>
+                            <p class="text-3xl font-light leading-snug">Bloque 11, Cacique, Santo Domingo <br> <span class="text-yellow-600/50 text-xl">Lunes a Sábado: 10am - 8pm</span></p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
+            <div class="pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 reveal">
                 <div class="flex items-center gap-2">
-                    <p class="font-display text-xl uppercase tracking-tighter">Micky <span class="text-orange-500">Cruz</span> Studio</p>
+                    <p class="font-display text-2xl uppercase tracking-tighter">Micky <span class="text-yellow-600">Cutz</span> Studio</p>
                 </div>
-                <p class="text-gray-600 text-xs uppercase tracking-widest font-bold">© 2026 Micky Cruz. All rights reserved.</p>
-                <div class="flex gap-12 text-xs uppercase tracking-widest font-bold text-gray-600">
-                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <p class="text-gray-700 text-[10px] uppercase tracking-widest font-bold">© 2026 MickyCutz Studio. Todos los derechos reservados.</p>
+                <div class="flex gap-16 text-[10px] uppercase tracking-widest font-bold text-gray-700">
+                    <a href="#" class="hover:text-white transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-white transition-colors">Términos</a>
                 </div>
             </div>
+        </div>
+
+        <!-- Background decoration -->
+        <div class="absolute bottom-0 right-0 font-display text-[30vw] leading-none text-white/[0.02] uppercase tracking-tighter select-none -z-0 translate-y-1/4 translate-x-1/4">
+            Micky
         </div>
     </footer>
 
@@ -327,10 +399,10 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl', 'shadow-black/5');
+                navbar.classList.add('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-white/5');
                 navbar.classList.remove('py-8');
             } else {
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl', 'shadow-black/5');
+                navbar.classList.remove('bg-black/90', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-white/5');
                 navbar.classList.add('py-8');
             }
         });

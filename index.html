@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Studio | Modern Design</title>
+    <title>Micky Cruz Studio | Creative & Tech Excellence</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --ink: #050505;
-            --paper: #f5f5f4;
-            --accent: #F27D26;
+            --ink: #0a0a0a;
+            --paper: #fcfcfc;
+            --accent: #F27D26; /* Warm orange accent */
         }
         body {
             background-color: var(--paper);
@@ -23,49 +23,61 @@
             -webkit-font-smoothing: antialiased;
         }
         .font-display { font-family: 'Anton', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
         .border-text {
             -webkit-text-stroke: 1px var(--ink);
             color: transparent;
         }
+        
         @keyframes slamIn {
-            0% { transform: scale(2) translateY(-100px) skewX(-10deg); opacity: 0; }
-            100% { transform: scale(1) translateY(0) skewX(-10deg); opacity: 1; }
+            0% { transform: scale(1.2) translateY(-30px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
         .animate-slam {
-            animation: slamIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slamIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        .skew-title {
-            transform: skewX(-10deg);
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .studio-grid {
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .image-mask {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        
+        .skew-title {
+            transform: skewX(-5deg);
+        }
     </style>
 </head>
-<body class="selection:bg-orange-500 selection:text-white">
+<body class="selection:bg-orange-500 selection:text-white studio-grid">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="font-display text-2xl tracking-tighter uppercase">Studio.</a>
+            <a href="#" class="font-display text-3xl tracking-tighter uppercase flex items-center gap-1">
+                Micky <span class="text-orange-500">Cruz</span>
+            </a>
             
             <div class="hidden md:flex gap-12 items-center">
-                <a href="#work" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Work</a>
-                <a href="#studio" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Studio</a>
-                <a href="#contact" class="text-sm font-semibold uppercase tracking-widest hover:text-orange-500 transition-colors">Contact</a>
-                <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-all">
-                    Let's Talk
-                </button>
+                <a href="#work" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Work</a>
+                <a href="#services" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Services</a>
+                <a href="#studio" class="text-xs font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Studio</a>
+                <a href="#contact" class="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-orange-600 transition-all shadow-xl shadow-orange-100">
+                    Collaborate
+                </a>
             </div>
 
             <button class="md:hidden" id="menu-toggle">
@@ -80,6 +92,7 @@
             <i data-lucide="x"></i>
         </button>
         <a href="#work" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Work</a>
+        <a href="#services" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Services</a>
         <a href="#studio" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Studio</a>
         <a href="#contact" class="font-display text-5xl uppercase tracking-tighter hover:text-orange-500 transition-colors">Contact</a>
     </div>
@@ -87,100 +100,143 @@
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center px-6 pt-20 relative overflow-hidden">
         <div class="max-w-7xl mx-auto w-full">
-            <div class="mb-4">
-                <span class="text-xs font-bold uppercase tracking-[0.3em] text-orange-500">Creative Agency</span>
+            <div class="mb-6">
+                <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-orange-500">Micky Cruz Studio</span>
             </div>
-            <h1 class="font-display text-[15vw] md:text-[12vw] leading-[0.85] uppercase tracking-tighter skew-title animate-slam">
-                Crafting <br />
-                Digital <br />
-                <span class="border-text">Emotion</span>
+            <h1 class="font-display text-[14vw] md:text-[11vw] leading-[0.8] uppercase tracking-tighter skew-title animate-slam">
+                Visual <br />
+                <span class="border-text">Narratives</span> <br />
+                & Code
             </h1>
             
-            <div class="mt-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <p class="max-w-md text-xl text-gray-600 leading-relaxed font-light">
-                    We are a boutique studio specializing in high-end digital experiences that bridge the gap between art and technology.
-                </p>
-                <div class="flex gap-4">
-                    <div class="w-12 h-12 rounded-full border border-black flex items-center justify-center animate-bounce">
-                        <i data-lucide="chevron-down"></i>
+            <div class="mt-16 flex flex-col md:flex-row md:items-end justify-between gap-12">
+                <div class="max-w-xl">
+                    <p class="text-2xl font-serif italic text-gray-800 leading-snug mb-6">
+                        "Capturing the essence of moments through a lens, and building the future through clean, efficient code."
+                    </p>
+                    <p class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Photography • Design • Software</p>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <div class="w-16 h-16 rounded-full border border-black flex items-center justify-center animate-bounce cursor-pointer hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all">
+                        <i data-lucide="arrow-down"></i>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Decorative elements -->
-        <div class="absolute -right-20 top-1/4 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl -z-10"></div>
-        <div class="absolute -left-20 bottom-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -right-40 top-1/4 w-[600px] h-[600px] bg-orange-400/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute -left-40 bottom-1/4 w-[600px] h-[600px] bg-gray-400/5 rounded-full blur-3xl -z-10"></div>
     </section>
 
-    <!-- Work Section -->
+    <!-- Featured Work Section -->
     <section id="work" class="py-32 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end mb-20 reveal">
-                <h2 class="font-display text-6xl uppercase tracking-tighter">Selected <br> Works</h2>
-                <p class="hidden md:block text-gray-500 max-w-xs text-right">A curated selection of our most impactful projects from the last year.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 reveal">
+                <div>
+                    <h2 class="font-display text-7xl uppercase tracking-tighter mb-4">Selected <br> Works</h2>
+                    <p class="text-orange-500 font-serif italic text-lg">A journey through light and logic.</p>
+                </div>
+                <p class="text-gray-400 max-w-xs mt-8 md:mt-0 text-sm uppercase tracking-widest font-bold">Portfolio 2024-2026</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
                 <!-- Project 1 -->
-                <div class="group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="AURA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
-                    </div>
-                    <div class="mt-8 flex justify-between items-start">
-                        <div>
-                            <h3 class="font-display text-3xl uppercase tracking-tight">AURA</h3>
-                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Branding</p>
+                <div class="md:col-span-7 group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-3xl aspect-[16/10] bg-gray-100 relative">
+                        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=1200" alt="Urban Light" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-display text-4xl uppercase tracking-widest">View Project</span>
                         </div>
-                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i data-lucide="arrow-right"></i>
+                    </div>
+                    <div class="mt-8 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-display text-4xl uppercase tracking-tight">Urban Light</h3>
+                            <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Photography Series</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all">
+                            <i data-lucide="external-link" size={20}></i>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Project 2 -->
-                <div class="group cursor-pointer md:mt-32 reveal">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="NEON" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                <div class="md:col-span-5 md:mt-48 group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100 relative">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&q=80&w=800" alt="TechFlow App" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white font-display text-4xl uppercase tracking-widest">Case Study</span>
+                        </div>
                     </div>
-                    <div class="mt-8 flex justify-between items-start">
-                        <div>
-                            <h3 class="font-display text-3xl uppercase tracking-tight">NEON</h3>
-                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Digital Design</p>
-                        </div>
-                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i data-lucide="arrow-right"></i>
-                        </div>
+                    <div class="mt-8">
+                        <h3 class="font-display text-4xl uppercase tracking-tight">TechFlow App</h3>
+                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Software Development</p>
                     </div>
                 </div>
+
                 <!-- Project 3 -->
-                <div class="group cursor-pointer reveal">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="KINETIC" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                <div class="md:col-span-5 group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100 relative">
+                        <img src="https://images.unsplash.com/photo-1493119508027-2b584f234d6c?auto=format&fit=crop&q=80&w=800" alt="Minimalist Branding" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
                     </div>
-                    <div class="mt-8 flex justify-between items-start">
-                        <div>
-                            <h3 class="font-display text-3xl uppercase tracking-tight">KINETIC</h3>
-                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">Motion</p>
-                        </div>
-                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i data-lucide="arrow-right"></i>
-                        </div>
+                    <div class="mt-8">
+                        <h3 class="font-display text-4xl uppercase tracking-tight">Minimalist Branding</h3>
+                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Digital Design</p>
                     </div>
                 </div>
+
                 <!-- Project 4 -->
-                <div class="group cursor-pointer md:mt-32 reveal">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-gray-100">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800" alt="FLUX" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerpolicy="no-referrer">
+                <div class="md:col-span-7 md:mt-48 group cursor-pointer reveal">
+                    <div class="overflow-hidden rounded-3xl aspect-[16/10] bg-gray-100 relative">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=1200" alt="Studio Sessions" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerpolicy="no-referrer">
                     </div>
-                    <div class="mt-8 flex justify-between items-start">
-                        <div>
-                            <h3 class="font-display text-3xl uppercase tracking-tight">FLUX</h3>
-                            <p class="text-gray-500 text-sm mt-1 uppercase tracking-widest">UI/UX</p>
-                        </div>
-                        <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-                            <i data-lucide="arrow-right"></i>
-                        </div>
+                    <div class="mt-8">
+                        <h3 class="font-display text-4xl uppercase tracking-tight">Studio Sessions</h3>
+                        <p class="text-gray-500 text-xs mt-2 uppercase tracking-[0.3em] font-bold">Portrait Photography</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="font-display text-7xl uppercase tracking-tighter mb-6">Expertise</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Service 1 -->
+                <div class="reveal">
+                    <div class="mb-8">
+                        <i data-lucide="camera" class="w-12 h-12 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Photography</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">
+                        High-end commercial, portrait, and urban photography. Capturing moments that tell a story beyond the frame.
+                    </p>
+                </div>
+                <!-- Service 2 -->
+                <div class="reveal">
+                    <div class="mb-8">
+                        <i data-lucide="layout" class="w-12 h-12 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Digital Design</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">
+                        Creating visual identities and user experiences that are both beautiful and functional. Branding, UI/UX, and Print.
+                    </p>
+                </div>
+                <!-- Service 3 -->
+                <div class="reveal">
+                    <div class="mb-8">
+                        <i data-lucide="terminal" class="w-12 h-12 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-display text-3xl uppercase tracking-tight mb-6">Software Dev</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">
+                        Building robust digital products. From web applications to custom tools, engineered for performance and scale.
+                    </p>
                 </div>
             </div>
         </div>
@@ -188,30 +244,34 @@
 
     <!-- Studio Section -->
     <section id="studio" class="py-32 px-6 bg-black text-white overflow-hidden relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div class="reveal">
-                <h2 class="font-display text-7xl uppercase tracking-tighter leading-none mb-12">
-                    We build <br>
-                    the future <br>
-                    of web
+                <div class="mb-8">
+                    <span class="text-orange-500 font-serif italic text-xl">The Studio</span>
+                </div>
+                <h2 class="font-display text-8xl uppercase tracking-tighter leading-none mb-12">
+                    Micky <br> Cruz <br> <span class="text-gray-700">Studio</span>
                 </h2>
                 <p class="text-xl text-gray-400 leading-relaxed font-light mb-12">
-                    Our studio is a playground for innovation. We don't just follow trends; we define them through meticulous design and cutting-edge engineering.
+                    A multi-disciplinary creative space where art meets technology. We believe in the power of visual storytelling and the precision of engineering.
                 </p>
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid grid-cols-2 gap-12">
                     <div>
-                        <p class="text-4xl font-display text-orange-500">12+</p>
-                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">Awards Won</p>
+                        <p class="text-5xl font-display text-orange-500">08+</p>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Years Experience</p>
                     </div>
                     <div>
-                        <p class="text-4xl font-display text-orange-500">150+</p>
-                        <p class="text-xs uppercase tracking-widest text-gray-500 mt-2">Projects Delivered</p>
+                        <p class="text-5xl font-display text-orange-500">200+</p>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mt-4 font-bold">Clients Worldwide</p>
                     </div>
                 </div>
             </div>
             <div class="relative reveal">
-                <div class="aspect-square rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" alt="Studio" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+                <div class="aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
+                    <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=1000" alt="Micky Cruz" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+                </div>
+                <div class="absolute -bottom-12 -left-12 bg-orange-500 p-12 rounded-full w-48 h-48 flex items-center justify-center text-center rotate-12">
+                    <p class="font-display text-white text-xl uppercase leading-tight">Creative <br> Vision</p>
                 </div>
             </div>
         </div>
@@ -220,36 +280,40 @@
     <!-- Footer -->
     <footer id="contact" class="py-32 px-6 bg-[#050505] text-white">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 mb-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-24 mb-32">
                 <div class="reveal">
-                    <h2 class="font-display text-8xl uppercase tracking-tighter leading-none mb-12">
-                        Start a <br> Project
+                    <h2 class="font-display text-9xl uppercase tracking-tighter leading-none mb-12">
+                        Let's <br> Talk
                     </h2>
-                    <a href="mailto:hello@studio.com" class="text-3xl md:text-5xl font-light hover:text-orange-500 transition-colors underline underline-offset-8">
-                        hello@studio.com
+                    <p class="text-gray-400 mb-12 max-w-sm text-lg font-light">Have a project in mind? Whether it's a shoot, a design, or a complex app, I'm ready to bring it to life.</p>
+                    <a href="mailto:micky@cruzstudio.com" class="text-3xl md:text-5xl font-serif italic hover:text-orange-500 transition-colors underline underline-offset-[12px] decoration-orange-500/30">
+                        micky@cruzstudio.com
                     </a>
                 </div>
                 <div class="flex flex-col justify-between reveal">
-                    <div class="space-y-4">
-                        <p class="text-gray-500 uppercase tracking-widest text-sm">Socials</p>
-                        <div class="flex gap-6">
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="instagram"></i></a>
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="twitter"></i></a>
-                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="linkedin"></i></a>
+                    <div class="space-y-6">
+                        <p class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-bold">Follow the Journey</p>
+                        <div class="flex gap-8">
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="instagram" size={24}></i></a>
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="twitter" size={24}></i></a>
+                            <a href="#" class="hover:text-orange-500 transition-colors"><i data-lucide="linkedin" size={24}></i></a>
                         </div>
                     </div>
-                    <div class="mt-20 md:mt-0">
-                        <p class="text-gray-500 uppercase tracking-widest text-sm mb-4">Office</p>
-                        <p class="text-xl font-light">123 Design St. <br> Creative District <br> NY 10001</p>
+                    <div class="mt-24 md:mt-0">
+                        <p class="text-gray-500 uppercase tracking-[0.3em] text-[10px] font-bold mb-6">Location</p>
+                        <p class="text-2xl font-light">Based in Mexico City <br> <span class="text-gray-500">Available Worldwide</span></p>
                     </div>
                 </div>
             </div>
             
-            <div class="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
-                <p class="text-gray-500 text-sm">© 2026 Creative Studio. All rights reserved.</p>
-                <div class="flex gap-12 text-sm text-gray-500">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 reveal">
+                <div class="flex items-center gap-2">
+                    <p class="font-display text-xl uppercase tracking-tighter">Micky <span class="text-orange-500">Cruz</span> Studio</p>
+                </div>
+                <p class="text-gray-600 text-xs uppercase tracking-widest font-bold">© 2026 Micky Cruz. All rights reserved.</p>
+                <div class="flex gap-12 text-xs uppercase tracking-widest font-bold text-gray-600">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
                 </div>
             </div>
         </div>
@@ -263,10 +327,10 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'py-4');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl', 'shadow-black/5');
                 navbar.classList.remove('py-8');
             } else {
-                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'py-4');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-xl', 'py-4', 'shadow-2xl', 'shadow-black/5');
                 navbar.classList.add('py-8');
             }
         });
@@ -299,7 +363,7 @@
         const revealOnScroll = () => {
             revealElements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
+                if (rect.top < window.innerHeight * 0.9) {
                     el.classList.add('active');
                 }
             });
